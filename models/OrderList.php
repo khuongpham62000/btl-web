@@ -8,9 +8,4 @@ class OrderList extends BaseModel
     public $total_price;
     public $address;
     public $finished_time;
-
-    static function get_db_name()
-    {
-        return 'order_list';
-    }
 }
