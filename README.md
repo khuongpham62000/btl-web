@@ -10,6 +10,7 @@
     3. Create attributes for class. Name and order of attributes must be the same as table in database.
 ## Use model:
     1. Two build-in static function is all() and findById().
+    2. Build-in non-static function is create(), save() and delete().
 # Controller:
 ## Create controller:
     1. Extends BaseAdminController or BaseController

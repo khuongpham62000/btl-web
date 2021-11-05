@@ -1,6 +1,5 @@
 <?php
-// For testing
-// require_once('BaseModel.php');
+require_once('BaseModel.php');
 class OrderList extends BaseModel
 {
     public $id;
