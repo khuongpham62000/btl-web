@@ -80,5 +80,11 @@ require_once('models/OrderList.php');
 
 // $order = OrderList::getOrderByTime(new Carbon('16:27:33 01-09-2021'));
 // $order = OrderList::getUnfinishedOrder();
-
+// $order = new OrderList(1, 1, 1);
+// $order->create();
 // $order->delete();
+
+// $order = OrderList::findById(6);
+// $date = new Carbon();
+// $order->finished_time = $date->format('y-m-d H:i:s');
+// $order->save();

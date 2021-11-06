@@ -37,7 +37,7 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item <?= (strcmp($page, 'Dashboard') == 0 ? 'active' : '') ?>">
+            <li class="nav-item <?= (strncmp($page, 'Dashboard', 9) == 0 ? 'active' : '') ?>">
                 <a class="nav-link" href="/index.php?controller=AdminDashboard">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -52,22 +52,22 @@
             </div>
 
             <!-- Nav Item - Account -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+            <li class="nav-item <?= (strncmp($page, 'User', 4) == 0 ? 'active' : '') ?>">
+                <a class="nav-link" href="/index.php?controller=AdminUser">
                     <i class="fas fa-fw fa-user"></i>
                     <span>User</span></a>
             </li>
 
             <!-- Nav Item - Order -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+            <li class="nav-item <?= (strncmp($page, 'Order', 5) == 0 ? 'active' : '') ?>">
+                <a class="nav-link" href="/index.php?controller=AdminOrder">
                     <i class="fas fa-fw fa-scroll"></i>
                     <span>Order</span></a>
             </li>
 
             <!-- Nav Item - Product -->
-            <li class="nav-item">
-                <a class="nav-link" href="charts.html">
+            <li class="nav-item <?= (strncmp($page, 'Product', 7) == 0 ? 'active' : '') ?>">
+                <a class="nav-link" href="/index.php?controller=AdminProduct">
                     <i class="fas fa-fw fa-cube"></i>
                     <span>Product</span></a>
             </li>
@@ -81,14 +81,14 @@
             </div>
 
             <!-- Nav Item - Account profile -->
-            <li class="nav-item">
+            <li class="nav-item <?= (strncmp($page, 'Profile', 7) == 0 ? 'active' : '') ?>">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Profile</span></a>
             </li>
 
             <!-- Nav Item - Account Logout -->
-            <li class="nav-item">
+            <li class="nav-item <?= (strncmp($page, 'Logout', 6) == 0 ? 'active' : '') ?>">
                 <a class="nav-link" href="charts.html">
                     <i class="fas fa-fw fa-sign-out-alt"></i>
                     <span>Logout</span></a>
@@ -115,6 +115,7 @@
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                     <!-- Topbar Navbar -->
+                    <h1 class="h3 ml-2 mb-0 text-gray-800"><?= $page ?></h1>
                     <ul class="navbar-nav ml-auto">
                         <!-- Nav Item - Alerts -->
                         <li class="nav-item dropdown no-arrow mx-1">

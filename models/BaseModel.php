@@ -69,7 +69,14 @@ class BaseModel
         // Prepare keys for query stmt
         $className = get_called_class();
         $class_vars = array_keys(get_class_vars($className));
-        array_shift($class_vars); // Remove id
+        $temp = array_filter( // Remove null field
+            $class_vars,
+            function ($class_var, $key) {
+                return !is_null($this->$class_var);
+            },
+            ARRAY_FILTER_USE_BOTH
+        );
+        $class_vars = $temp;
         // Prepare values for query stmt
         $vars_value = array_map(function ($var) {
             return $this->$var;
@@ -102,7 +109,6 @@ class BaseModel
         $vars_value = array_map(function ($var) {
             return $this->$var;
         }, $class_vars);
-        $vars_value[] = $vars_value[0]; // Append id for WHERE
         // Prepare stmt
         $stmt = 'UPDATE ' . $className::get_db_name() . ' SET ';
         foreach ($class_vars as $name) {

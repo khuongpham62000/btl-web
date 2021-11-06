@@ -9,6 +9,7 @@ class OrderList extends BaseModel
     public $account_id;
     public $total_price;
     public $address;
+    public $order_time;
     public $finished_time;
 
     static function getOrderByTime($start, $end = null)
