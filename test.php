@@ -1,5 +1,7 @@
 <?php
 
+use Carbon\Carbon;
+
 function var_pre($var)
 {
     echo '<pre>';
@@ -76,13 +78,7 @@ function var_pre($var)
 
 require_once('models/OrderList.php');
 
-// $order = OrderList::findById(1);
+// $order = OrderList::getOrderByTime(new Carbon('16:27:33 01-09-2021'));
+// $order = OrderList::getUnfinishedOrder();
 
-// $order->total_price = 110;
-// $order->save();
-
-$order = new OrderList(7, 1, 1, 1, '2021-11-02 16:27:45');
-
-var_pre($order);
-
-$order->delete();
+// $order->delete();

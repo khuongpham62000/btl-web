@@ -1,6 +1,7 @@
 <?php
 require_once('env.php');
 require_once('connection.php');
+require 'vendor/autoload.php';
 
 if (isset($_GET['controller'])) {
     $controller = $_GET['controller'];
@@ -10,7 +11,7 @@ if (isset($_GET['controller'])) {
         $action = 'index';
     }
 } else {
-    $controller = 'AdminDashboard';
+    $controller = 'Test';
     $action = 'index';
 }
 require_once('routes.php');
