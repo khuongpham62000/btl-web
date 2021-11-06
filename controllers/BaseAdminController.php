@@ -32,7 +32,7 @@ class BaseAdminController
             require_once('views/layouts/admin_page.php');
         } else {
             // Nếu file muốn gọi ra không tồn tại thì chuyển hướng đến trang báo lỗi.
-            header('Location: index.php?controller=pages&action=error');
+            header('Location: index.php?controller=AdminDashboard&action=error');
         }
     }
 }

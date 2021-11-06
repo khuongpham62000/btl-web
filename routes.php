@@ -2,7 +2,7 @@
 // Các controllers trong hệ thống và các action có thể gọi ra từ controller đó.
 $controllers = array(
     'AdminDashboard' => ['index', 'error'],
-    'AdminOrder' => ['index', 'finishedOrder'],
+    'AdminOrder' => ['index', 'finishedOrder', 'viewDetail'],
     'Test' => ['index'],
 );
 

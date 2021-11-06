@@ -35,6 +35,11 @@ class AdminDashboardController extends BaseAdminController
         $this->render('dashboard', $data);
     }
 
+    public function error()
+    {
+        $this->render('404');
+    }
+
     private static function getEarningByMonth($orders, $month)
     {
         $year = Carbon::now()->year;

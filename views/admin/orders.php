@@ -1,5 +1,6 @@
 <!-- Custom styles for this page -->
 <link href="assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+<link href="assets/css/custom-table.css" rel="stylesheet">
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -26,21 +27,26 @@
                 </tfoot>
                 <tbody>
                     <?php
-                    require_once('test.php');
-                    // var_pre($orders);
                     foreach ($orders as $order) {
-                        // var_pre($order);
                     ?>
-                        <tr>
-                            <td><?= $order->id ?></td>
-                            <td><?= $order->address ?></td>
-                            <td><?= $order->total_price ?>$</td>
-                            <td><?= AdminOrderController::convertDate($order->order_time) ?></td>
+                        <tr onclick="triggred()" item-id=<?= $order->id ?>>
+                            <td class="align-middle"><?= $order->id ?></td>
+                            <td class="align-middle"><?= $order->address ?></td>
+                            <td class="align-middle"><?= $order->total_price ?>$</td>
+                            <td class="align-middle"><?= AdminOrderController::convertDate($order->order_time) ?></td>
+
                             <?php
                             if (is_null($order->finished_time)) {
-                                echo '<td><a href="index.php?controller=AdminOrder&action=finishedOrder&id=' . $order->id . '">Finish order</a></td>';
+                            ?>
+                                <td class="align-middle p-0 pl-3 pr-3"><a href="index.php?controller=AdminOrder&action=finishedOrder&id=<?= $order->id ?>" class="btn btn-success btn-icon-split">
+                                        <span class="icon text-white-50 align-middle">
+                                            <i class="fas fa-check"></i>
+                                        </span>
+                                        <span class="text">Complete</span>
+                                    </a>
+                                </td>
+                            <?php
                             } else echo '<td>' . AdminOrderController::convertDate($order->finished_time) . '</td>';
-
                             ?>
                         </tr>
                     <?php } ?>
@@ -49,3 +55,9 @@
         </div>
     </div>
 </div>
+
+<script>
+    function triggred() {
+        window.location.href = "index.php?controller=AdminOrder&action=viewDetail&id=" + this.event.path[1].getAttribute('item-id');
+    }
+</script>

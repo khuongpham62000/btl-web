@@ -64,6 +64,16 @@ class BaseModel
         return null;
     }
 
+    static function findByIdOrFail($id)
+    {
+        $className = get_called_class();
+        $item = $className::findById($id);
+        if (is_null($item)) {
+            header('Location: index.php?controller=AdminDashboard&action=error');
+        }
+        return $item;
+    }
+
     function create()
     {
         // Prepare keys for query stmt
