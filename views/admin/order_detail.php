@@ -40,7 +40,7 @@
             <div class="h5 m-0 col-xl-3 col-md-3 align-self-center">
                 Order Time
             </div>
-            <div type="text" class="form-control form-control-user col-xl-8 col-md-6"><?= $order->order_time ?></div>
+            <div type="text" class="form-control form-control-user col-xl-8 col-md-6"><?= AdminOrderController::convertDate($order->order_time) ?></div>
         </div>
         <?php if (!is_null($order->finished_time)) { ?>
             <!-- Field -->
@@ -48,7 +48,7 @@
                 <div class="h5 m-0 col-xl-3 col-md-3 align-self-center">
                     Finished Time
                 </div>
-                <div type="text" class="form-control form-control-user col-xl-8 col-md-6"><?= $order->finished_time ?></div>
+                <div type="text" class="form-control form-control-user col-xl-8 col-md-6"><?= AdminOrderController::convertDate($order->finished_time) ?></div>
             </div>
         <?php } ?>
     </div>
@@ -85,8 +85,7 @@
                     <?php
                     foreach ($order_items as $item) {
                     ?>
-                        <!-- <tr onclick="triggred()" item-id=<?= $item['product_id'] ?>> -->
-                        <tr>
+                        <tr onclick="triggred()" item-id=<?= $item['product_id'] ?>>
                             <td class="align-middle"><?= $item['product_name'] ?></td>
                             <td class="align-middle"><?= $item['price'] ?>$</td>
                             <td class="align-middle"><?= $item['quantity'] ?></td>
@@ -99,8 +98,8 @@
     </div>
 </div>
 
-<!-- <script>
+<script>
     function triggred() {
-        window.location.href = "index.php?controller=AdminOrder&action=viewDetail&id=" + this.event.path[1].getAttribute('item-id');
+        window.location.href = "index.php?controller=AdminProduct&action=viewDetail&id=" + this.event.path[1].getAttribute('item-id');
     }
-</script> -->
+</script>

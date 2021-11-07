@@ -20,7 +20,7 @@ class AdminOrderController extends BaseAdminController
     {
         $orders = OrderList::all();
         $data = array('orders' => $orders);
-        $this->render('orders', $data);
+        $this->render('orders', $data, 'table_js');
     }
 
     public function viewDetail()

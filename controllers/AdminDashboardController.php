@@ -32,7 +32,7 @@ class AdminDashboardController extends BaseAdminController
             'pending_order' => self::getPendingOrder(),
             'current_proplem' => 0
         );
-        $this->render('dashboard', $data);
+        $this->render('dashboard', $data, 'dashboard_js');
     }
 
     public function error()

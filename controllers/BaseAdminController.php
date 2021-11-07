@@ -6,11 +6,11 @@ class BaseAdminController
     protected $page;
 
     // Hàm hiển thị kết quả ra cho người dùng.
-    function render($file, $data = array())
+    function render($file, $data = array(), $js_page = null)
     {
         // Kiểm tra file gọi đến có tồn tại hay không?
         $view_file = 'views/' . $this->folder . '/' . $file . '.php';
-        $js_file = 'views/' . $this->folder . '/js/' . $file . '_js.php';
+        $js_file = 'views/' . $this->folder . '/js/' . $js_page . '.php';
         if (is_file($view_file)) {
             // Nếu tồn tại file đó thì tạo ra các biến chứa giá trị truyền vào lúc gọi hàm
             extract($data);

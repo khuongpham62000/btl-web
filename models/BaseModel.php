@@ -12,7 +12,6 @@ class BaseModel
     function __construct(...$params)
     {
         $class_vars = get_class_vars(get_called_class());
-        $class_vars_len = count($class_vars);
 
         switch (count($params)) {
             case 1:
