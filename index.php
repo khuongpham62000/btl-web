@@ -1,7 +1,8 @@
 <?php
 require_once('env.php');
 require_once('connection.php');
-require 'vendor/autoload.php';
+require_once('auth.php');
+require_once('vendor/autoload.php');
 
 if (isset($_GET['controller'])) {
     $controller = $_GET['controller'];

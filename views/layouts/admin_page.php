@@ -82,7 +82,7 @@
 
             <!-- Nav Item - Account profile -->
             <li class="nav-item <?= (strncmp($page, 'Profile', 7) == 0 ? 'active' : '') ?>">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="/index.php?controller=AdminProfile">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Profile</span></a>
             </li>

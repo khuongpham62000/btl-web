@@ -4,6 +4,7 @@ $controllers = array(
     'AdminDashboard' => ['index', 'error'],
     'AdminOrder' => ['index', 'finishedOrder', 'viewDetail'],
     'AdminProduct' => ['index', 'viewDetail', 'save', 'updateImage'],
+    'AdminProfile' => ['index', 'save', 'updateImage'],
     'Test' => ['index'],
 );
 

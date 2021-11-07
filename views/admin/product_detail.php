@@ -25,37 +25,35 @@
                 <div class="h5 m-0 col-xl-3 col-md-4 align-self-center">
                     Name
                 </div>
-                <input id="product_name" value="<?= $product->name ?>" type="text" class="form-control form-control-user col-xl-8 col-md-8" autocomplete="off" spellcheck="false">
+                <input id="product_name" value="<?= $product->name ?>" type="text" class="form-control form-control-user col-xl-8 col-md-8" autocomplete="off" spellcheck="false" />
             </div>
             <!-- Field -->
             <div class="form-group row">
                 <div class="h5 m-0 col-xl-3 col-md-4 align-self-center">
                     Stock
                 </div>
-                <input id="product_stock" value="<?= $product->stock ?>" type="text" class="form-control form-control-user col-xl-8 col-md-8" autocomplete="off" spellcheck="false">
+                <input id="product_stock" value="<?= $product->stock ?>" type="text" class="form-control form-control-user col-xl-8 col-md-8" autocomplete="off" spellcheck="false" />
             </div>
             <!-- Field -->
             <div class="form-group row">
                 <div class="h5 m-0 col-xl-3 col-md-4 align-self-center">
                     Price
                 </div>
-                <input id="product_price" value="<?= $product->price ?>" type="text" class="form-control form-control-user col-xl-8 col-md-8" autocomplete="off" spellcheck="false">
+                <input id="product_price" value="<?= $product->price ?>" type="text" class="form-control form-control-user col-xl-8 col-md-8" autocomplete="off" spellcheck="false" />
             </div>
             <!-- Field -->
             <div class="form-group row">
                 <div class="h5 m-0 col-xl-3 col-md-4 align-self-center">
                     Volume
                 </div>
-                <input id="product_volume" value="<?= $product->volume ?>" type="text" class="form-control form-control-user col-xl-8 col-md-8" autocomplete="off" spellcheck="false">
+                <input id="product_volume" value="<?= $product->volume ?>" type="text" class="form-control form-control-user col-xl-8 col-md-8" autocomplete="off" spellcheck="false" />
             </div>
             <!-- Field -->
             <div class="form-group row">
                 <div class="h5 m-0 col-xl-3 col-md-4 align-self-center">
                     Description
                 </div>
-                <textarea id="product_description" type="text" class="form-control form-control-user col-xl-8 col-md-8" autocomplete="off" spellcheck="false" rows="6">
-                    <?= $product->description ?>
-                </textarea>
+                <textarea id="product_description" type="text" class="form-control form-control-user col-xl-8 col-md-8" autocomplete="off" spellcheck="false" rows="6"><?= $product->description ?></textarea>
             </div>
             <!-- Field -->
             <div class="form-group row">
@@ -70,14 +68,6 @@
 </form>
 
 <script>
-    // Dropzone.options.uploadForm = {
-    //     // url: "index.php?controller=AdminProduct&action=updateImage&id=<?= $product->id ?>",
-    //     paramName: "image",
-    //     maxFilesize: 2, // MB
-    //     maxFiles: 1,
-    //     acceptedFiles: "image/*",
-    // };
-
     Dropzone.options.myDropzone = {
         url: "index.php?controller=AdminProduct&action=updateImage&id=<?= $product->id ?>",
         autoProcessQueue: true,
