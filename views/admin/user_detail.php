@@ -4,21 +4,22 @@
 
 <!-- Header -->
 <div class="row">
-    <div class="col-xl-2 col-md-4 col-sm-4 mb-4 mr-5">
+    <div class="col-xl-2 col-md-4 col-sm-4 mb-2 mr-5">
         <img class="img-thumbnail rounded-circle" src="<?= $account->image ?>" />
     </div>
     <div class="col">
-        <div class="h3 mt-4 text-gray-800">
-            Hello <?= $account->name ?>!
-        </div>
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        <button type="button" class="btn btn-primary m-3" data-toggle="modal" data-target="#exampleModalCenter">
             Edit Avatar
+        </button>
+        <!-- Button trigger modal2 -->
+        <button type="button" class="btn btn-danger" onclick="deleteUser()">
+            Delete User
         </button>
     </div>
 </div>
 
-<hr class="sidebar-divider" />
+<hr class=" sidebar-divider" />
 <!-- Content -->
 <div class="row justify-content-center">
     <div class="col-xl-8 col-md-12 text-gray-900">
@@ -54,6 +55,14 @@
             <input type="text" class="form-control form-control-user col-xl-10 col-md-8" id="address" value="<?= $account->address ?>" autocomplete="off" spellcheck="false" />
         </div>
         <!-- ./Address field -->
+        <!-- Role field -->
+        <div class="form-group row">
+            <div class="h5 m-0 col-xl-2 col-md-2 align-self-center">
+                Role
+            </div>
+            <input type="text" class="form-control form-control-user col-xl-10 col-md-8" id="role" value="<?= $account->role ?>" autocomplete="off" spellcheck="false" />
+        </div>
+        <!-- ./Role field -->
         <!-- Confirm button -->
         <div class="row justify-content-center">
             <div class="btn btn-success btn-icon-split mr-3" id="submit" onclick="triggred()">
@@ -69,7 +78,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Upload Image</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -106,7 +115,7 @@
             });
         },
         success: function() {
-            window.location.href = "index.php?controller=AdminProfile&action=index&id=<?= $account->id ?>";
+            window.location.href = "index.php?controller=AdminUser&action=viewDetail&id=<?= $account->id ?>";
         }
     }
 
@@ -123,9 +132,10 @@
         formData.append('email', $('#email')[0].value);
         formData.append('phone', $('#phone')[0].value);
         formData.append('address', $('#address')[0].value);
+        formData.append('role', $('#role')[0].value);
         $.ajax({
             type: "POST",
-            url: "index.php?controller=AdminProfile&action=save&id=<?= $account->id ?>",
+            url: "index.php?controller=AdminUser&action=save&id=<?= $account->id ?>",
             data: formData,
             cache: false,
             contentType: false,
@@ -137,6 +147,19 @@
                     btn_icon.toggleClass("fa-spinner");
                     btn_icon.toggleClass("fa-spin");
                 }
+            },
+        });
+    }
+
+    function deleteUser() {
+        $.ajax({
+            type: "GET",
+            url: "index.php?controller=AdminUser&action=deleteUser&id=<?= $account->id ?>",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(data, status) {
+                window.location.href = "index.php?controller=AdminUser";
             },
         });
     }

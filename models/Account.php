@@ -6,8 +6,9 @@ class Account extends BaseModel
     public $id;
     public $name;
     public $email;
-    public $image;
+    public $phone;
     public $address;
+    public $image;
     public $role;
 
     static function findAccountByEmail($email)

@@ -5,28 +5,31 @@ use Carbon\Carbon;
 require_once('controllers/BaseAdminController.php');
 require_once('models/Account.php');
 
-class AdminProfileController extends BaseAdminController
+class AdminUserController extends BaseAdminController
 {
     function __construct()
     {
         $this->folder = 'admin';
-        $this->page = 'Profile';
+        $this->page = 'User Management';
     }
 
     public function index()
     {
-        $account = Account::findById(2);
-        $data = array('account' => $account);
-        $this->render('profile', $data);
+        $this->render(
+            'users',
+            array('accounts' => Account::all()),
+            'table_js'
+        );
     }
 
     public function viewDetail()
     {
         if (isset($_GET['id'])) {
-            $product = Product::findByIdOrFail($_GET['id']);
-            $data = array('product' => $product,);
-            $this->render('product_detail', $data);
-        }
+            $this->render(
+                'user_detail',
+                array('account' => Account::findByIdOrFail($_GET['id']))
+            );
+        } else header('Location: index.php?controller=AdminDashboard&action=error');
     }
 
     public function updateImage()
@@ -54,7 +57,16 @@ class AdminProfileController extends BaseAdminController
             $account->email = $_POST['email'];
             $account->phone = $_POST['phone'];
             $account->address = $_POST['address'];
+            $account->role = $_POST['role'];
             $account->save();
+        }
+    }
+
+    public function deleteUser()
+    {
+        if (isset($_GET['id'])) {
+            $account = Account::findByIdOrFail($_GET['id']);
+            $account->delete();
         }
     }
 }
