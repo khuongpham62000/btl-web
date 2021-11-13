@@ -6,6 +6,7 @@ $controllers = array(
     'AdminUser' => ['index', 'viewDetail', 'save', 'deleteUser', 'updateImage'],
     'AdminProduct' => ['index', 'viewDetail', 'save', 'updateImage'],
     'AdminProfile' => ['index', 'save', 'updateImage'],
+    'Login' => ['index', 'verify', 'logout'],
     'Test' => ['index'],
 );
 
@@ -21,4 +22,4 @@ include_once('controllers/' . $controller . 'Controller.php');
 // Tạo ra tên controller class từ các giá trị lấy được từ URL sau đó gọi ra để hiển thị trả về cho người dùng.
 $klass = $controller . 'Controller';
 $controller = new $klass;
-$controller->$action();
+$controller->$action(); // magic method

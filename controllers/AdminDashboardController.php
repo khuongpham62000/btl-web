@@ -9,7 +9,6 @@ class AdminDashboardController extends BaseAdminController
 {
     function __construct()
     {
-        $this->folder = 'admin';
         $this->page = 'Dashboard';
     }
 

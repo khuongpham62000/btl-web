@@ -89,7 +89,7 @@
 
             <!-- Nav Item - Account Logout -->
             <li class="nav-item <?= (strncmp($page, 'Logout', 6) == 0 ? 'active' : '') ?>">
-                <a class="nav-link" href="charts.html">
+                <a class="nav-link" href="/index.php?controller=Login&action=logout">
                     <i class="fas fa-fw fa-sign-out-alt"></i>
                     <span>Logout</span></a>
             </li>

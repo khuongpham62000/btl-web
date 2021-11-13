@@ -9,7 +9,6 @@ class AdminProfileController extends BaseAdminController
 {
     function __construct()
     {
-        $this->folder = 'admin';
         $this->page = 'Profile';
     }
 

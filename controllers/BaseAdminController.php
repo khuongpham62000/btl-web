@@ -2,7 +2,7 @@
 class BaseAdminController
 {
     // Biến có giá trị là thư mục nào đó trong thư mục views, chứa các file view template của phần đang truy cập.
-    protected $folder;
+    protected $folder = "admin";
     protected $page;
 
     // Hàm hiển thị kết quả ra cho người dùng.

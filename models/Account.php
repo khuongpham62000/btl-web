@@ -6,6 +6,7 @@ class Account extends BaseModel
     public $id;
     public $name;
     public $email;
+    public $password;
     public $phone;
     public $address;
     public $image;
@@ -14,8 +15,8 @@ class Account extends BaseModel
     static function findAccountByEmail($email)
     {
         $db = DB::getInstance();
-        $req = $db->prepare('SELECT * FROM ' . self::get_db_name() . ' WHERE email=:email');
-        $req->execute(array('email', $email));
+        $req = $db->prepare('SELECT * FROM accounts WHERE email=:email');
+        $req->execute(array('email' => $email));
 
         $item = $req->fetch();
         if (isset($item['id'])) {

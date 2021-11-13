@@ -9,7 +9,6 @@ class AdminUserController extends BaseAdminController
 {
     function __construct()
     {
-        $this->folder = 'admin';
         $this->page = 'User Management';
     }
 
