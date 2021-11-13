@@ -1,6 +1,6 @@
 <?php
 require_once('controllers/BaseAuthController.php');
-require('models/Account.php');
+require_once('models/Account.php');
 
 class LoginController extends BaseAuthController
 {
