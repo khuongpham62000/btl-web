@@ -26,7 +26,10 @@ class AdminOrderController extends BaseAdminController
     {
         if (isset($_GET['id'])) {
             $order = OrderList::findByIdOrFail($_GET['id']);
-            $user = Account::findByIdOrFail($order->account_id);
+            $user = Account::findById($order->account_id);
+            if (is_null($user)) {
+                $user = new Account;
+            }
             $order_items = OrderItem::findOrderItemsById($_GET['id']);
             $order_items_detail = array_map(function ($order_item) {
                 $product = Product::findByIdOrFail($order_item->product_id);

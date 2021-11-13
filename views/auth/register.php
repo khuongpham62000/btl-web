@@ -9,31 +9,31 @@
                     <form class="user">
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="text" class="form-control form-control-user" id="name" placeholder="Full Name" autocomplete="off" spellcheck="false" />
+                                <input type="text" class="form-control form-control-user" name="name" id="name" placeholder="Full Name" autocomplete="off" spellcheck="false" />
                             </div>
                             <div class="col-sm-6">
-                                <input type="text" class="form-control form-control-user" id="phone" placeholder="Phone Number" autocomplete="off" spellcheck="false" />
+                                <input type="text" class="form-control form-control-user" name="phone" id="phone" placeholder="Phone Number" autocomplete="off" spellcheck="false" />
                             </div>
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control form-control-user" id="email" placeholder="Email Address" autocomplete="off" spellcheck="false" />
+                            <input type="email" class="form-control form-control-user" name="email" id="email" placeholder="Email Address" autocomplete="off" spellcheck="false" />
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="password" class="form-control form-control-user" id="password" placeholder="Password" />
+                                <input type="password" class="form-control form-control-user" name="password" id="password" placeholder="Password" />
                             </div>
                             <div class="col-sm-6">
-                                <input type="password" class="form-control form-control-user" id="password-repeat" placeholder="Repeat Password" />
+                                <input type="password" class="form-control form-control-user" name="password-2" id="password-repeat" placeholder="Repeat Password" />
                             </div>
                         </div>
-                        <a href="login.html" class="btn btn-primary btn-user btn-block">
+                        <a onclick="register()" class="btn btn-primary btn-user btn-block">
                             Register Account
                         </a>
                         <hr />
-                        <a href="index.html" class="btn btn-google btn-user btn-block">
+                        <a href="#" class="btn btn-google btn-user btn-block">
                             <i class="fab fa-google fa-fw"></i> Register with Google
                         </a>
-                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                        <a href="#" class="btn btn-facebook btn-user btn-block">
                             <i class="fab fa-facebook-f fa-fw"></i> Register with
                             Facebook
                         </a>
@@ -43,10 +43,30 @@
                         <a class="small" href="forgot-password.html">Forgot Password?</a>
                     </div>
                     <div class="text-center">
-                        <a class="small" href="login.html">Already have an account? Login!</a>
+                        <a class="small" href="index.php?controller=Login">Already have an account? Login!</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function register() {
+        let formData = new FormData($('form')[0]);
+        $.ajax({
+            type: "POST",
+            url: "index.php?controller=Register&action=register",
+            contentType: false,
+            processData: false,
+            data: formData,
+            success: function(data) {
+                console.log(data);
+                data = JSON.parse(data);
+                if (data.status = 200) {
+                    // window.location.href = "index.php?controller=AdminUser";
+                }
+            },
+        });
+    }
+</script>

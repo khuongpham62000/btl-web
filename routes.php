@@ -7,6 +7,7 @@ $controllers = array(
     'AdminProduct' => ['index', 'viewDetail', 'save', 'updateImage'],
     'AdminProfile' => ['index', 'save', 'updateImage'],
     'Login' => ['index', 'verify', 'logout'],
+    'Register' => ['index', 'register'],
     'Test' => ['index'],
 );
 
