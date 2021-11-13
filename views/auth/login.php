@@ -19,7 +19,7 @@
                                 <label class="custom-control-label" for="customCheck">Remember Me</label>
                             </div>
                         </div>
-                        <a onclick="login()" class="btn btn-primary btn-user btn-block">
+                        <a onclick="login(event)" class="btn btn-primary btn-user btn-block">
                             Login
                         </a>
                         <hr />
@@ -42,23 +42,36 @@
         </div>
     </div>
 </div>
+
 <script>
-    function login() {
+    function verified(formData) {
+        return checkEmail(formData.get('email')) && !checkNull(formData.get('password'));
+    }
+
+    function login(event) {
+        event.preventDefault();
+        $('.modal-body')[0].innerHTML = "Email hoặc Password không chính xác";
         let formData = new FormData($('form')[0]);
-        formData.append("remember", $('#customCheck')[0].value);
-        $.ajax({
-            type: "POST",
-            url: "index.php?controller=Login&action=verify",
-            contentType: false,
-            processData: false,
-            data: formData,
-            success: function(data) {
-                console.log(data);
-                data = JSON.parse(data);
-                if (data.status = 200) {
-                    window.location.href = "index.php?controller=AdminUser";
-                }
-            },
-        });
+        if (verified(formData)) {
+            formData.append("remember", $('#customCheck')[0].value);
+            $.ajax({
+                type: "POST",
+                url: "index.php?controller=Login&action=verify",
+                contentType: false,
+                processData: false,
+                data: formData,
+                success: function(data) {
+                    console.log(data);
+                    data = JSON.parse(data);
+                    if (data.status === 200) {
+                        window.location.href = "index.php?controller=AdminUser";
+                    } else {
+                        $('#modal').modal('toggle');
+                    }
+                },
+            });
+        } else {
+            $('#modal').modal('toggle');
+        }
     }
 </script>

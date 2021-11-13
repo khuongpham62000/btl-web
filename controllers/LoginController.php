@@ -16,7 +16,13 @@ class LoginController extends BaseAuthController
 
     public function verify()
     {
-        if (isset($_POST['email']) && isset($_POST['password']) && $_POST['email'] != '' && $_POST['password'] != '') {
+        $mailRegex = '/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i';
+        if (
+            isset($_POST['email']) && isset($_POST['password']) &&
+            $_POST['email'] != '' && $_POST['password'] != '' &&
+            preg_match($mailRegex, $_POST['email']) == 1
+        ) {
+
             $findAccount = Account::findAccountByEmail($_POST['email']);
             if (is_null($findAccount) || $findAccount->password != $_POST['password']) {
                 echo json_encode(array("status" => 401));

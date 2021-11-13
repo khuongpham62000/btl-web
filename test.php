@@ -76,7 +76,7 @@ function var_pre($var)
 // $my_class->b();
 
 
-require_once('models/OrderList.php');
+// require_once('models/OrderList.php');
 
 // $order = OrderList::getOrderByTime(new Carbon('16:27:33 01-09-2021'));
 // $order = OrderList::getUnfinishedOrder();
@@ -88,3 +88,7 @@ require_once('models/OrderList.php');
 // $date = new Carbon();
 // $order->finished_time = $date->format('y-m-d H:i:s');
 // $order->save();
+
+// $str = "012345678911";
+// $pattern = '/^0[0-9]{9,10}+$/';
+// echo preg_match($pattern, $str);
