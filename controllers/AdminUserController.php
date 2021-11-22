@@ -41,6 +41,8 @@ class AdminUserController extends BaseAdminController
             $product->save();
             echo '<pre>';
             if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
+                require_once('controllers/Utils.php');
+                resizeImage($uploadfile);
                 echo "File is valid, and was successfully uploaded.\n";
             } else {
                 echo "Possible file upload attack!\n";

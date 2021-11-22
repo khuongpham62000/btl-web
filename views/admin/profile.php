@@ -43,7 +43,7 @@
             <div class="h5 m-0 col-xl-2 col-md-2 align-self-center">
                 Phone
             </div>
-            <input type="email" class="form-control form-control-user col-xl-10 col-md-8" id="phone" value="<?= $account->phone ?>" autocomplete="off" spellcheck="false" />
+            <input type="text" class="form-control form-control-user col-xl-10 col-md-8" id="phone" value="<?= $account->phone ?>" autocomplete="off" spellcheck="false" />
         </div>
         <!-- ./Phone field -->
         <!-- Address field -->
@@ -54,6 +54,14 @@
             <input type="text" class="form-control form-control-user col-xl-10 col-md-8" id="address" value="<?= $account->address ?>" autocomplete="off" spellcheck="false" />
         </div>
         <!-- ./Address field -->
+        <!-- Password field -->
+        <div class="form-group row">
+            <div class="h5 m-0 col-xl-2 col-md-2 align-self-center">
+                Address
+            </div>
+            <input type="password" class="form-control form-control-user col-xl-10 col-md-8" id="password" value="<?= $account->password ?>" autocomplete="off" spellcheck="false" />
+        </div>
+        <!-- ./Password field -->
         <!-- Confirm button -->
         <div class="row justify-content-center">
             <div class="btn btn-success btn-icon-split mr-3" id="submit" onclick="triggred()">
@@ -112,9 +120,16 @@
 
     function triggred() {
         var btn_icon = $('#btn-icon');
-        if (btn_icon.hasClass("fa-check")) {
+        var parent_btn = $('#submit');
+        if (btn_icon.hasClass("fa-check") || btn_icon.hasClass("fa-times")) {
             $('#btn-text')[0].innerHTML = "Saving";
-            btn_icon.toggleClass("fa-check");
+            if (btn_icon.hasClass("fa-check"))
+                btn_icon.toggleClass("fa-check");
+            if (btn_icon.hasClass("fa-times")) {
+                btn_icon.toggleClass("fa-times");
+                parent_btn.toggleClass('btn-danger', false);
+                parent_btn.toggleClass('btn-success', true);
+            }
             btn_icon.toggleClass("fa-spinner");
             btn_icon.toggleClass("fa-spin");
         }
@@ -123,6 +138,7 @@
         formData.append('email', $('#email')[0].value);
         formData.append('phone', $('#phone')[0].value);
         formData.append('address', $('#address')[0].value);
+        formData.append('password', $('#password')[0].value);
         $.ajax({
             type: "POST",
             url: "index.php?controller=AdminProfile&action=save&id=<?= $account->id ?>",
@@ -131,12 +147,27 @@
             contentType: false,
             processData: false,
             success: function(data, status) {
-                if (!btn_icon.hasClass("fa-check")) {
-                    $('#btn-text')[0].innerHTML = "Saved";
-                    btn_icon.toggleClass("fa-check");
-                    btn_icon.toggleClass("fa-spinner");
-                    btn_icon.toggleClass("fa-spin");
+                console.log(data);
+                data = JSON.parse(data);
+                if (data.status === 200) {
+                    if (!btn_icon.hasClass("fa-check")) {
+                        $('#btn-text')[0].innerHTML = "Saved";
+                        btn_icon.toggleClass("fa-check");
+                        btn_icon.toggleClass("fa-spinner");
+                        btn_icon.toggleClass("fa-spin");
+
+                    }
+                } else {
+                    if (!btn_icon.hasClass("fa-check")) {
+                        $('#btn-text')[0].innerHTML = "Error";
+                        btn_icon.toggleClass("fa-times");
+                        btn_icon.toggleClass("fa-spinner");
+                        btn_icon.toggleClass("fa-spin");
+                        parent_btn.toggleClass('btn-success');
+                        parent_btn.toggleClass('btn-danger');
+                    }
                 }
+
             },
         });
     }

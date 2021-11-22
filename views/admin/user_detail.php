@@ -44,7 +44,7 @@
             <div class="h5 m-0 col-xl-2 col-md-2 align-self-center">
                 Phone
             </div>
-            <input type="email" class="form-control form-control-user col-xl-10 col-md-8" id="phone" value="<?= $account->phone ?>" autocomplete="off" spellcheck="false" />
+            <input type="text" class="form-control form-control-user col-xl-10 col-md-8" id="phone" value="<?= $account->phone ?>" autocomplete="off" spellcheck="false" />
         </div>
         <!-- ./Phone field -->
         <!-- Address field -->
