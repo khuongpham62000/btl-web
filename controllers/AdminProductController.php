@@ -57,4 +57,12 @@ class AdminProductController extends BaseAdminController
             $product->save();
         }
     }
+
+    public function deleteProduct()
+    {
+        if (isset($_GET['id'])) {
+            $product = Product::findByIdOrFail($_GET['id']);
+            $product->delete();
+        }
+    }
 }

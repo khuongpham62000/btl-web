@@ -5,11 +5,19 @@
     <!-- Title -->
     <div class="row justify-content-between">
         <h1 class="h3 ml-3 mb-0 text-gray-800">Product <?= $product->id ?></h1>
-        <div class="btn btn-success btn-icon-split mr-3" id="submit" onclick="triggred()">
-            <span class="icon text-white-50">
-                <i class="fas fa-check" id="btn-icon"></i>
-            </span>
-            <span class="text mr-3 ml-3" id="btn-text">Save Info</span>
+        <div>
+            <div class="btn btn-icon-split mr-3 btn-danger" id="delete" onclick="delete_item()">
+                <span class="icon text-white-50">
+                    <i class="fas fa-times" id="btn-icon"></i>
+                </span>
+                <span class="text mr-3 ml-3" id="btn-text">Delete Product</span>
+            </div>
+            <div class="btn btn-success btn-icon-split mr-3" id="submit" onclick="triggred()">
+                <span class="icon text-white-50">
+                    <i class="fas fa-check" id="btn-icon"></i>
+                </span>
+                <span class="text mr-3 ml-3" id="btn-text">Save Info</span>
+            </div>
         </div>
     </div>
 
@@ -81,7 +89,18 @@
         }
     }
 
-
+    function delete_item() {
+        $.ajax({
+            type: "GET",
+            url: "index.php?controller=AdminProduct&action=deleteProduct&id=<?= $product->id ?>",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(data, status) {
+                window.location.href = "index.php?controller=AdminProduct";
+            },
+        });
+    }
 
     function triggred() {
         var btn_icon = $('#btn-icon');
