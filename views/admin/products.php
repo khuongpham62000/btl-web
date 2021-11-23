@@ -1,6 +1,7 @@
 <!-- Custom styles for this page -->
 <link href="assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 <link href="assets/css/custom-table.css" rel="stylesheet">
+<link href="assets/css/add-btn.css" rel="stylesheet">
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -39,9 +40,14 @@
         </div>
     </div>
 </div>
+<div class="add-btn" onclick="addProduct()"></div>
 
 <script>
     function triggred() {
         window.location.href = "index.php?controller=AdminProduct&action=viewDetail&id=" + this.event.path[1].getAttribute('item-id');
+    }
+
+    function addProduct() {
+        window.location.href = "index.php?controller=AdminProduct&action=addProduct";
     }
 </script>

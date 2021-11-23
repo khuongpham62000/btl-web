@@ -1,0 +1,31 @@
+.add-btn {
+  display: block;
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: #224abe;
+  right: 30px;
+  bottom: 10px;
+  transition: background-color 0.2s ease-in-out;
+  text-align: "center";
+}
+
+.add-btn:hover {
+  background-color: #4e73df;
+}
+
+.add-btn::after {
+  content: "+";
+  display: block;
+  color: #fff;
+  font-size: 40px;
+  position: relative;
+  text-align: center;
+}
+
+@media only screen and (max-width: 768px) {
+  .add-btn {
+    left: 20%;
+  }
+}

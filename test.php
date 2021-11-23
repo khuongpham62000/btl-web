@@ -92,3 +92,11 @@ function var_pre($var)
 // $str = "012345678911";
 // $pattern = '/^0[0-9]{9,10}+$/';
 // echo preg_match($pattern, $str);
+
+// var_pre(is_numeric("123"));
+// var_pre(is_numeric("12.121"));
+// var_pre(is_numeric("12,121"));
+// var_pre(is_numeric("12e21"));
+
+// require_once('models/Product.php');
+// var_pre(Product::getNewId());

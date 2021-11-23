@@ -64,7 +64,11 @@
                     console.log(data);
                     data = JSON.parse(data);
                     if (data.status === 200) {
-                        window.location.href = "index.php?controller=AdminUser";
+                        if (data.type === "ADMIN") {
+                            window.location.href = "index.php?controller=AdminDashboard";
+                        } else {
+                            window.location.href = "index.php";
+                        }
                     } else {
                         $('#modal').modal('toggle');
                     }
