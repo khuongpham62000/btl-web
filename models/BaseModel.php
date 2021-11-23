@@ -138,4 +138,18 @@ class BaseModel
         $req = $db->prepare('DELETE FROM ' . $className::get_db_name() . ' WHERE id = :id');
         $req->execute(array('id' => $this->id));
     }
+
+    public static function getNewId()
+    {
+        $className = get_called_class();
+        $db = DB::getInstance();
+        $req = $db->prepare('SELECT * FROM ' . $className::get_db_name() . ' ORDER BY id DESC LIMIT 1');
+        $req->execute();
+
+        $item = $req->fetch();
+        if (isset($item['id'])) {
+            return $item['id'] + 1;
+        }
+        return 0;
+    }
 }

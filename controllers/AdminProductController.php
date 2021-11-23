@@ -88,7 +88,7 @@ class AdminProductController extends BaseAdminController
                 $uploadfile = $uploaddir . "product_img_" . $new_product_id . '.' . pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
                 if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
                     $_SESSION['user']->image == $uploadfile;
-                    $newAccount = new Product(
+                    $newProduct = new Product(
                         $new_product_id,
                         $_POST['name'],
                         $uploadfile,
@@ -97,8 +97,7 @@ class AdminProductController extends BaseAdminController
                         $_POST['volume'],
                         $_POST['description'],
                     );
-                    $newAccount->role = "USER";
-                    $newAccount->create();
+                    $newProduct->create();
                     echo json_encode(array("status" => 200, 'id' => $new_product_id));
                 } else {
                     echo json_encode(array("status" => 401, "message" => "Possible file upload attack!\n"));

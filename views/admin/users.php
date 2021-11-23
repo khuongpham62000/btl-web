@@ -1,6 +1,7 @@
 <!-- Custom styles for this page -->
 <link href="assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 <link href="assets/css/custom-table.css" rel="stylesheet">
+<link href="assets/css/add-btn.css" rel="stylesheet">
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
@@ -44,6 +45,17 @@
 </div>
 
 <script>
+    window.onload = function(e) {
+        console.log("hic");
+        let contentPage = document.getElementsByClassName('container-fluid')[0];
+        let btn = document.createElement("div");
+        btn.classList.add("add-btn");
+        btn.onclick = function() {
+            window.location.href = "index.php?controller=AdminUser&action=addUser";
+        }
+        contentPage.appendChild(btn);
+    }
+
     function triggred() {
         window.location.href = "index.php?controller=AdminUser&action=viewDetail&id=" + this.event.path[1].getAttribute('item-id');
     }

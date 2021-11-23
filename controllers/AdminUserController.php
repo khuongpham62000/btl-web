@@ -1,7 +1,5 @@
 <?php
 
-use Carbon\Carbon;
-
 require_once('controllers/BaseAdminController.php');
 require_once('models/Account.php');
 
@@ -68,6 +66,55 @@ class AdminUserController extends BaseAdminController
         if (isset($_GET['id'])) {
             $account = Account::findByIdOrFail($_GET['id']);
             $account->delete();
+        }
+    }
+
+    public function addUser()
+    {
+        if (!isset($_GET['new'])) {
+            $this->render('user_new');
+            return;
+        } else {
+            // require_once('./test.php');
+            // var_pre($_POST);
+            $mailRegex = '/^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i';
+            $phoneRegex = '/^0[0-9]{9,10}+$/';
+            if (
+                isset($_POST['name']) && isset($_POST['email']) &&
+                isset($_POST['password']) && isset($_POST['phone']) &&
+                $_POST['name'] != '' && $_POST['email'] != '' &&
+                $_POST['password'] != '' && $_POST['phone'] != '' &&
+                is_numeric($_POST['phone']) &&
+                preg_match($mailRegex, $_POST['email']) == 1 &&
+                preg_match($phoneRegex, $_POST['phone']) == 1
+            ) {
+                $role = (strcmp($_POST['role'], "USER") != 0 || strcmp($_POST['role'], "ADMIN") != 0) ? "USER" : $_POST['role'];
+                $new_account_id = Account::getNewId();
+                $uploaddir = 'assets/img/account/';
+                $uploadfile = $uploaddir . "account_img_" . $new_account_id . '.' . pathinfo($_FILES['file']['name'], PATHINFO_EXTENSION);
+                if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
+                    require_once('controllers/Utils.php');
+                    resizeImage($uploadfile);
+                    $_SESSION['user']->image == $uploadfile;
+                    $newAccount = new Account(
+                        $new_account_id,
+                        $_POST['name'],
+                        $_POST['email'],
+                        $_POST['password'],
+                        $_POST['phone'],
+                        $_POST['address'],
+                        $uploadfile,
+                        $role,
+                    );
+                    $newAccount->role = "USER";
+                    $newAccount->create();
+                    echo json_encode(array("status" => 200, 'id' => $new_account_id));
+                } else {
+                    echo json_encode(array("status" => 401, "message" => "Possible file upload attack!\n"));
+                }
+            } else {
+                echo json_encode(array("status" => 401));
+            }
         }
     }
 }
