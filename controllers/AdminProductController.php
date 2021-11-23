@@ -62,8 +62,6 @@ class AdminProductController extends BaseAdminController
     {
         if (isset($_GET['id'])) {
             $product = Product::findByIdOrFail($_GET['id']);
-            require_once('./test.php');
-            var_pre($product);
             $product->delete();
         }
     }

@@ -68,4 +68,16 @@ class AdminOrderController extends BaseAdminController
         $date = new Carbon($date);
         return $date->format('H:i, d/m/Y');
     }
+
+    public function deleteOrder()
+    {
+        if (isset($_GET['id'])) {
+            $order = OrderList::findByIdOrFail($_GET['id']);
+            $order_items = OrderItem::findOrderItemsById($_GET['id']);
+            foreach ($order_items as $item) {
+                $item->delete();
+            }
+            $order->delete();
+        }
+    }
 }

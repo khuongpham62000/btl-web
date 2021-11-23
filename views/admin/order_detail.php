@@ -1,14 +1,23 @@
 <!-- Title -->
 <div class="row justify-content-between">
     <h1 class="h3 ml-3 mb-0 text-gray-800">Order <?= $order->id ?></h1>
-    <?php if (is_null($order->finished_time)) { ?>
-        <a href="index.php?controller=AdminOrder&action=finishedOrder&id=<?= $order->id ?>&detail=True" class="btn btn-success btn-icon-split mr-3">
+    <div>
+        <div class="btn btn-icon-split mr-3 btn-danger" id="delete" onclick="delete_item()">
             <span class="icon text-white-50">
-                <i class="fas fa-check"></i>
+                <i class="fas fa-times" id="btn-icon"></i>
             </span>
-            <span class="text mr-3 ml-3">Complete Order</span>
-        </a>
-    <?php } ?>
+            <span class="text mr-3 ml-3" id="btn-text">Delete Order</span>
+        </div>
+        <?php if (is_null($order->finished_time)) { ?>
+            <a href="index.php?controller=AdminOrder&action=finishedOrder&id=<?= $order->id ?>&detail=True" class="btn btn-success btn-icon-split mr-3">
+                <span class="icon text-white-50">
+                    <i class="fas fa-check"></i>
+                </span>
+                <span class="text mr-3 ml-3">Complete Order</span>
+            </a>
+        <?php } ?>
+    </div>
+
 </div>
 <hr class="sidebar-divider" />
 <!-- Content -->
@@ -99,6 +108,20 @@
 </div>
 
 <script>
+    function delete_item() {
+        $.ajax({
+            type: "GET",
+            url: "index.php?controller=AdminOrder&action=deleteOrder&id=<?= $order->id ?>",
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: function(data, status) {
+                window.location.href = "index.php?controller=AdminOrder";
+            },
+        });
+    }
+
+
     function triggred() {
         window.location.href = "index.php?controller=AdminProduct&action=viewDetail&id=" + this.event.path[1].getAttribute('item-id');
     }

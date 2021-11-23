@@ -2,7 +2,7 @@
 // Các controllers trong hệ thống và các action có thể gọi ra từ controller đó.
 $controllers = array(
     'AdminDashboard' => ['index', 'error'],
-    'AdminOrder' => ['index', 'finishedOrder', 'viewDetail'],
+    'AdminOrder' => ['index', 'finishedOrder', 'viewDetail', 'deleteOrder'],
     'AdminUser' => ['index', 'viewDetail', 'save', 'deleteUser', 'updateImage', 'addUser'],
     'AdminProduct' => ['index', 'viewDetail', 'save', 'updateImage', 'addProduct', 'deleteProduct'],
     'AdminProfile' => ['index', 'save', 'updateImage'],
