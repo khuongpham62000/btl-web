@@ -40,14 +40,20 @@
         </div>
     </div>
 </div>
-<div class="add-btn" onclick="addProduct()"></div>
 
 <script>
-    function triggred() {
-        window.location.href = "index.php?controller=AdminProduct&action=viewDetail&id=" + this.event.path[1].getAttribute('item-id');
+    window.onload = function(e) {
+        console.log("hic");
+        let contentPage = document.getElementById('accordionSidebar');
+        let btn = document.createElement("div");
+        btn.classList.add("add-btn");
+        btn.onclick = function() {
+            window.location.href = "index.php?controller=AdminProduct&action=addProduct";
+        }
+        contentPage.appendChild(btn);
     }
 
-    function addProduct() {
-        window.location.href = "index.php?controller=AdminProduct&action=addProduct";
+    function triggred() {
+        window.location.href = "index.php?controller=AdminProduct&action=viewDetail&id=" + this.event.path[1].getAttribute('item-id');
     }
 </script>
