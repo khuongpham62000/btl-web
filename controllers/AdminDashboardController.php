@@ -23,7 +23,8 @@ class AdminDashboardController extends BaseAdminController
         }
         $earning_anual = array_reduce(
             $monthly_earning,
-            fn ($carry, $order) => $carry + $order
+            fn ($carry, $order) => $carry + $order,
+            0
         );
         $data = array(
             'monthly_earning' => $monthly_earning,
@@ -54,7 +55,8 @@ class AdminDashboardController extends BaseAdminController
         );
         return array_reduce(
             $monthly_orders,
-            fn ($carry, $order) => $carry + $order->total_price
+            fn ($carry, $order) => $carry + $order->total_price,
+            0
         );
     }
 
@@ -63,7 +65,8 @@ class AdminDashboardController extends BaseAdminController
         $orders = OrderList::getUnfinishedOrder();
         return array_reduce(
             $orders,
-            fn ($carry, $order) => $carry + 1
+            fn ($carry, $order) => $carry + 1,
+            0
         );
     }
 }
