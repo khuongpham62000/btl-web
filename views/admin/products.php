@@ -44,7 +44,7 @@
 <script>
     window.onload = function(e) {
         console.log("hic");
-        let contentPage = document.getElementById('accordionSidebar');
+        let contentPage = document.getElementsByClassName('container-fluid')[0];
         let btn = document.createElement("div");
         btn.classList.add("add-btn");
         btn.onclick = function() {
