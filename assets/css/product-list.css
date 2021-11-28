@@ -1,0 +1,48 @@
+.container {
+  margin-top: 5rem;
+  display: flex;
+  flex-flow: row wrap;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+#modal-content {
+  height: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+}
+
+#modal-content .item_title {
+  font-size: 35px;
+  padding-bottom: 30px;
+}
+#modal-content .item_volume::before {
+  content: "Volume: ";
+}
+#modal-content .item_price::before {
+  content: "Price: ";
+}
+#modal-content .item_price::after {
+  content: "$";
+}
+#modal-content .item_image {
+  height: 100%;
+  width: auto;
+  cursor: auto;
+  align-items: center;
+  flex: 0 1 50%;
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+@media only screen and (max-width: 768px) {
+  #modal-content {
+    flex-flow: column nowrap;
+    /* align-items: center; */
+  }
+}

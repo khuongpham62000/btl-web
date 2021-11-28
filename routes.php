@@ -8,6 +8,8 @@ $controllers = array(
     'AdminProfile' => ['index', 'save', 'updateImage'],
     'Login' => ['index', 'verify', 'logout'],
     'Register' => ['index', 'register'],
+    'UserProduct' => ['index',],
+    'UserCart' => ['index', 'order'],
     'Test' => ['index'],
 );
 
