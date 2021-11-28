@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="assets/css/product-list.css" />
+<link rel="stylesheet" href="assets/css/modal.css" />
 <link rel="stylesheet" href="assets/css/product.css" />
 <script>
     var data = <?php echo json_encode($products, JSON_HEX_TAG); ?>;

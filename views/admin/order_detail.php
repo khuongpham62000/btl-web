@@ -28,7 +28,7 @@
             <div class="h5 m-0 col-xl-3 col-md-3 align-self-center">
                 Customer
             </div>
-            <div type="text" class="form-control form-control-user col-xl-8 col-md-6"><?= $user->name ?></div>
+            <div type="text" class="form-control form-control-user col-xl-8 col-md-6"><?= $order->customer_name ?></div>
         </div>
         <!-- Field -->
         <div class="form-group row">

@@ -21,8 +21,12 @@ if (isset($_GET['controller'])) {
 }
 
 // Verify admin
-if (strncmp($controller, "Admin", 5) == 0) {
+if (strncmp($controller, "Admin", 5) == 0 && strcmp($controller, "AdminProfile") != 0) {
     if (!Auth::isLogin() || !Auth::isAdmin()) {
+        header('Location: ../index.php?controller=Login');
+    }
+} else if (strcmp($controller, "UserProfile") == 0 || strcmp($controller, "AdminProfile") == 0) {
+    if (!Auth::isLogin()) {
         header('Location: ../index.php?controller=Login');
     }
 }

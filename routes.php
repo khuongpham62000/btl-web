@@ -10,6 +10,8 @@ $controllers = array(
     'Register' => ['index', 'register'],
     'UserProduct' => ['index',],
     'UserCart' => ['index', 'order'],
+    'UserProfile' => ['index',],
+    'UserAbout' => ['index',],
     'Test' => ['index'],
 );
 

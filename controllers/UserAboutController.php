@@ -1,14 +1,15 @@
 <?php
 require_once('controllers/BaseUserController.php');
 
-class TestController extends BaseUserController
+class UserAboutController extends BaseUserController
 {
     function __construct()
     {
+        $this->page = "About Us";
     }
 
     public function index()
     {
-        require_once('test.php');
+        $this->render('about');
     }
 }

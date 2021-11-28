@@ -67,7 +67,7 @@
                         if (data.type === "ADMIN") {
                             window.location.href = "index.php?controller=AdminDashboard";
                         } else {
-                            window.location.href = "index.php";
+                            window.location.href = "index.php?controller=UserProfile";
                         }
                     } else {
                         $('#modal').modal('toggle');

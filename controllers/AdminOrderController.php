@@ -6,7 +6,6 @@ require_once('controllers/BaseAdminController.php');
 require_once('models/OrderList.php');
 require_once('models/OrderItem.php');
 require_once('models/Product.php');
-require_once('models/Account.php');
 
 class AdminOrderController extends BaseAdminController
 {
@@ -26,10 +25,6 @@ class AdminOrderController extends BaseAdminController
     {
         if (isset($_GET['id'])) {
             $order = OrderList::findByIdOrFail($_GET['id']);
-            $user = Account::findById($order->account_id);
-            if (is_null($user)) {
-                $user = new Account;
-            }
             $order_items = OrderItem::findOrderItemsById($_GET['id']);
             $order_items_detail = array_map(function ($order_item) {
                 $product = Product::findByIdOrFail($order_item->product_id);
@@ -42,7 +37,7 @@ class AdminOrderController extends BaseAdminController
                 );
             }, $order_items);
             $data = array(
-                'order' => $order, 'user' => $user,
+                'order' => $order,
                 'order_items' => $order_items_detail,
             );
             $this->render('order_detail', $data);

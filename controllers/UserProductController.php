@@ -14,10 +14,4 @@ class UserProductController extends BaseUserController
         $products = Product::all();
         $this->render('products', array("products" => $products));
     }
-
-    public function cart()
-    {
-        $products = Product::all();
-        $this->render('cart', array("products" => $products));
-    }
 }

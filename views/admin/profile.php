@@ -57,7 +57,7 @@
         <!-- Password field -->
         <div class="form-group row">
             <div class="h5 m-0 col-xl-2 col-md-2 align-self-center">
-                Address
+                Password
             </div>
             <input type="password" class="form-control form-control-user col-xl-10 col-md-8" id="password" value="<?= $account->password ?>" autocomplete="off" spellcheck="false" />
         </div>
@@ -77,7 +77,7 @@
             <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                        <h5 class="modal-title" id="exampleModalLongTitle">Upload Avatar</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
