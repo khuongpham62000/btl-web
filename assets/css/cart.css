@@ -59,8 +59,7 @@ h1 {
   margin: 3rem auto;
 }
 
-#order,
-#confirm {
+.confirm-button {
   padding: 0.5rem 3rem;
   border: none;
   background-color: hsl(207, 73%, 60%);
@@ -70,12 +69,11 @@ h1 {
   cursor: pointer;
 }
 
-#confirm:hover,
-#order:hover {
+.confirm-button:hover {
   background-color: hsl(207, 73%, 50%);
 }
 
-#confirm:active {
+.confirm-button:active {
   transform: scale(1.05);
 }
 

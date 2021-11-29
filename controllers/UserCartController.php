@@ -26,6 +26,11 @@ class UserCartController extends BaseUserController
             try {
                 if (intval($_POST["user_id"]) > 0) {
                     $user = Account::findByIdOrFail($_POST["user_id"]);
+                } else {
+                    $phoneRegex = '/^0[0-9]{9,10}+$/';
+                    if (preg_match($phoneRegex, $_POST['phone']) != 1) {
+                        throw new Exception();
+                    }
                 }
                 $newOrderId = OrderList::getNewId();
                 $total_value = 0;
@@ -52,8 +57,8 @@ class UserCartController extends BaseUserController
                 $newOrder->create();
                 echo json_encode(array("status" => 200, "message" => "Success\n"));
             } catch (\Throwable $th) {
-                echo json_encode(array("status" => 401, "message" => "Invalid\n"));
+                echo json_encode(array("status" => 401, "message" => "Invalid Information"));
             }
-        } else echo json_encode(array("status" => 401, "message" => "Invalid\n"));
+        } else echo json_encode(array("status" => 401, "message" => "Cart is Empty"));
     }
 }

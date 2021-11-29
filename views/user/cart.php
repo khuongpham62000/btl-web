@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="assets/css/product.css" />
 <link rel="stylesheet" href="assets/css/modal.css" />
 <link rel="stylesheet" href="assets/css/cart.css" />
+<link rel="stylesheet" href="assets/css/roller.css" />
 <script>
   var products = <?php echo json_encode($products, JSON_HEX_TAG); ?>;
 </script>
@@ -30,7 +31,7 @@
       </tfoot>
     </table>
     <div class="total_row">
-      <button id="confirm">Confirm</button>
+      <button id="confirm" class="confirm-button">Confirm</button>
     </div>
   </div>
 </div>

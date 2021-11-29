@@ -13,6 +13,23 @@ var cartRow = (product, quantity) => {
     `;
 };
 
+var roller = () => {
+  return `
+  <div class="centered" style="width: fit-content;">
+  <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+  `;
+};
+
+var updateStatus = (status) => {
+  return `<div class="centered">
+    <div style="text-align:center">${status}</div>
+    <div class="total_row">
+      <button id="close-modal" class="confirm-button">Ok</button>
+    </div>
+  </div>`;
+};
+
 var inputForm = () => {
   return user_id === -1
     ? `
@@ -30,7 +47,7 @@ var inputForm = () => {
         <input class="item_input" type="text" name="address" id="address">
     </div>
     <div class="total_row">
-      <button id="order">Order</button>
+      <button id="order"  class="confirm-button">Order</button>
     </div>
   </div>
   `
@@ -41,7 +58,7 @@ var inputForm = () => {
         <input class="item_input" type="text" name="address" id="address">
     </div>
     <div class="total_row">
-      <button id="order">Order</button>
+      <button id="order" class="confirm-button">Order</button>
     </div>
   </div>
   `;
@@ -84,6 +101,20 @@ function inputAddress() {
   modal.style.zIndex = "2";
 }
 
+function checkNullInput() {
+  console.log("hi");
+  let checked = true;
+  $("input[type!='file']").each(function () {
+    if (checkNull($(this).val())) {
+      checked = false;
+      $(this).toggleClass("error-border", true);
+    } else {
+      $(this).toggleClass("error-border", false);
+    }
+  });
+  return checked;
+}
+
 $(document).ready(() => {
   genCart();
 
@@ -102,7 +133,7 @@ $(document).ready(() => {
     inputAddress();
     $("#order").on("click", (e) => {
       let address = $("#address").val();
-      if (!(address === "")) {
+      if (checkNullInput()) {
         let data = Cookies.get("cart");
         data = JSON.parse(data === undefined ? "{}" : data);
         for (const key in data) {
@@ -126,14 +157,24 @@ $(document).ready(() => {
             user_id: user_id,
           };
         }
-        console.log(cartData);
+        $("#modal-content").html(roller());
         $.ajax({
           type: "POST",
           url: "index.php?controller=UserCart&action=order",
           data: cartData,
           success: function (data, status) {
+            data = JSON.parse(data);
             console.log(data);
-            // data = JSON.parse(data);
+            if (data.status === 200) {
+              // Cookies.remove("cart");
+              $("#modal-content").html(updateStatus(data.message));
+            } else {
+              $("#modal-content").html(updateStatus(data.message));
+            }
+            $("#close-modal").on("click", () => {
+              modal.style.opacity = "0";
+              modal.style.zIndex = "-1";
+            });
           },
         });
       }

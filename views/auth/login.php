@@ -37,6 +37,9 @@
                     <div class="text-center">
                         <a class="small" href="index.php?controller=Register">Create an Account!</a>
                     </div>
+                    <div class="text-center">
+                        <a class="small" href="index.php?controller=UserFronks">Go to Homepage!</a>
+                    </div>
                 </div>
             </div>
         </div>
