@@ -9,6 +9,7 @@
     <div class="preview-default">No Item Selected</div>
   </div>
   <div class="cart_table">
+    <h1>Cart</h1>
     <table>
       <thead>
         <tr>

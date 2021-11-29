@@ -12,6 +12,7 @@ $controllers = array(
     'UserCart' => ['index', 'order'],
     'UserProfile' => ['index',],
     'UserAbout' => ['index',],
+    'UserFronks' => ['index',],
     'Test' => ['index'],
 );
 

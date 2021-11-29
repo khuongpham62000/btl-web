@@ -8,7 +8,7 @@
             </span>
             <span class="text mr-3 ml-3" id="btn-text">Delete Order</span>
         </div>
-        <?php if (is_null($order->finished_time)) { ?>
+        <?php if (is_null($order->finished_time) || strcmp($order->finished_time, "0000-00-00 00:00:00") == 0) { ?>
             <a href="index.php?controller=AdminOrder&action=finishedOrder&id=<?= $order->id ?>&detail=True" class="btn btn-success btn-icon-split mr-3">
                 <span class="icon text-white-50">
                     <i class="fas fa-check"></i>
@@ -33,14 +33,21 @@
         <!-- Field -->
         <div class="form-group row">
             <div class="h5 m-0 col-xl-3 col-md-3 align-self-center">
-                Order Address
+                Order's Address
             </div>
             <div type="text" class="form-control form-control-user col-xl-8 col-md-6"><?= $order->address ?></div>
         </div>
         <!-- Field -->
         <div class="form-group row">
             <div class="h5 m-0 col-xl-3 col-md-3 align-self-center">
-                Order Total Price
+                Phone number
+            </div>
+            <div type="text" class="form-control form-control-user col-xl-8 col-md-6"><?= $order->customer_phone ?></div>
+        </div>
+        <!-- Field -->
+        <div class="form-group row">
+            <div class="h5 m-0 col-xl-3 col-md-3 align-self-center">
+                Total Price
             </div>
             <div type="text" class="form-control form-control-user col-xl-8 col-md-6"><?= $order->total_price ?></div>
         </div>

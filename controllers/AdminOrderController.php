@@ -59,7 +59,7 @@ class AdminOrderController extends BaseAdminController
 
     public static function convertDate($date)
     {
-        if (is_null($date)) return null;
+        if (is_null($date) || strcmp($date, "0000-00-00 00:00:00") == 0) return null;
         $date = new Carbon($date);
         return $date->format('H:i, d/m/Y');
     }

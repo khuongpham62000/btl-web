@@ -10,6 +10,7 @@ class OrderList extends BaseModel
     public $total_price;
     public $address;
     public $customer_name;
+    public $customer_phone;
     public $order_time;
     public $finished_time;
 

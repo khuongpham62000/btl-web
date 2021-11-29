@@ -37,6 +37,12 @@ body {
   flex-flow: column nowrap;
   align-items: stretch;
   padding: 0 1rem;
+  margin-top: 2rem;
+}
+
+h1 {
+  text-align: center;
+  padding: 1rem;
 }
 
 .table_container {
@@ -53,6 +59,7 @@ body {
   margin: 3rem auto;
 }
 
+#order,
 #confirm {
   padding: 0.5rem 3rem;
   border: none;
@@ -60,9 +67,11 @@ body {
   font-weight: 700;
   color: #fff;
   transition: 0.2s background-color ease-in-out, 0.2s transform ease-in-out;
+  cursor: pointer;
 }
 
-#confirm:hover {
+#confirm:hover,
+#order:hover {
   background-color: hsl(207, 73%, 50%);
 }
 
@@ -102,4 +111,12 @@ tfoot {
 
 .modal .item:hover {
   transform: rotateX(0);
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 60%;
+  transform: translate(-50%, -50%);
 }

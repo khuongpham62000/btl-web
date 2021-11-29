@@ -36,7 +36,7 @@
                             <td class="align-middle"><?= AdminOrderController::convertDate($order->order_time) ?></td>
 
                             <?php
-                            if (is_null($order->finished_time)) {
+                            if (is_null($order->finished_time) || strcmp($order->finished_time, "0000-00-00 00:00:00") == 0) {
                             ?>
                                 <td class="align-middle p-0 pl-3 pr-3"><a href="index.php?controller=AdminOrder&action=finishedOrder&id=<?= $order->id ?>" class="btn btn-success btn-icon-split">
                                         <span class="icon text-white-50 align-middle">

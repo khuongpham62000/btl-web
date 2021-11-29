@@ -26,7 +26,7 @@
       <li class="nav_menu"><span>&#9776;</span></li>
       <li><a href="/index.php?controller=UserProduct">Nut Milks</a></li>
       <li class="nav_about_us"><a href="/index.php?controller=UserAbout">About Us</a></li>
-      <li class="nav_home"><a href="#">Fronks</a></li>
+      <li class="nav_home"><a href="/index.php?controller=UserFronks">Fronks</a></li>
       <li><a href="/index.php?controller=UserCart">Cart</a></li>
       <li><a href="/index.php?controller=UserProfile">User</a></li>
     </ul>
@@ -40,6 +40,10 @@
       <div id="modal-content"></div>
     </div>
   </div>
+
+  <script>
+    var user_id = <?= isset($_SESSION["user"]) ? $_SESSION["user"]->id : -1 ?>
+  </script>
 
   <?= @$content ?>
 

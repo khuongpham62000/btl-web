@@ -3,6 +3,7 @@
 <link rel="stylesheet" href="assets/css/product.css" />
 <script>
     var data = <?php echo json_encode($products, JSON_HEX_TAG); ?>;
+    var id = <?= $id ?>;
 </script>
 <div class="container"></div>
 <script src="assets/js/product.js"></script>

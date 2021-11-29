@@ -11,7 +11,12 @@ class UserProductController extends BaseUserController
 
     public function index()
     {
+        $id = "-1";
         $products = Product::all();
-        $this->render('products', array("products" => $products));
+        if (isset($_GET["id"])) {
+            if (!is_null(Product::findById($_GET["id"])))
+                $id = $_GET["id"];
+        }
+        $this->render('products', array("products" => $products, "id" => $id));
     }
 }

@@ -6,17 +6,19 @@
         padding-bottom: 4rem;
     }
 
-    a {
-        text-decoration: none;
-        color: black;
-        font-weight: 600;
-    }
-
     .big,
     .medium,
     .small {
         text-align: center;
         max-width: 600px;
+        padding-left: 2rem !important;
+        padding-right: 2rem !important;
+    }
+
+    a {
+        text-decoration: none;
+        color: black;
+        font-weight: 600;
     }
 
     .small a:hover {

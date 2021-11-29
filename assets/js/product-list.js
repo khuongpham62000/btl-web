@@ -17,6 +17,10 @@ function modal_block(data) {
     `;
 }
 
+function clickBruh(id) {
+  let c = $(`.item[item-id=${id}]`).children(".item_image").trigger("click");
+}
+
 $(document).ready(() => {
   // Cookies.remove("cart");
 
@@ -51,4 +55,6 @@ $(document).ready(() => {
         modal.style.zIndex = "2";
       });
   });
+
+  clickBruh(id);
 });
