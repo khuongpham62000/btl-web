@@ -102,16 +102,19 @@ function inputAddress() {
 }
 
 function checkNullInput() {
-  console.log("hi");
   let checked = true;
-  $("input[type!='file']").each(function () {
-    if (checkNull($(this).val())) {
-      checked = false;
-      $(this).toggleClass("error-border", true);
-    } else {
-      $(this).toggleClass("error-border", false);
-    }
-  });
+  $(".centered")
+    .children(".item_input")
+    .children(".item_input")
+    .children("input[type!='file']")
+    .each(function () {
+      if (checkNull($(this).val())) {
+        checked = false;
+        $(this).toggleClass("error-border", true);
+      } else {
+        $(this).toggleClass("error-border", false);
+      }
+    });
   return checked;
 }
 
@@ -166,7 +169,7 @@ $(document).ready(() => {
             data = JSON.parse(data);
             console.log(data);
             if (data.status === 200) {
-              // Cookies.remove("cart");
+              Cookies.remove("cart");
               $("#modal-content").html(updateStatus(data.message));
             } else {
               $("#modal-content").html(updateStatus(data.message));
