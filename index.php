@@ -4,10 +4,6 @@ require_once('connection.php');
 require_once('auth.php');
 require_once('vendor/autoload.php');
 
-require_once('test.php');
-// var_pre(Auth::isLogin());
-// var_pre($_SESSION);
-
 if (isset($_GET['controller'])) {
     $controller = $_GET['controller'];
     if (isset($_GET['action'])) {
@@ -16,7 +12,7 @@ if (isset($_GET['controller'])) {
         $action = 'index';
     }
 } else {
-    $controller = 'Test';
+    $controller = 'UserFronks';
     $action = 'index';
 }
 
@@ -25,6 +21,7 @@ if (strncmp($controller, "Admin", 5) == 0 && strcmp($controller, "AdminProfile")
     if (!Auth::isLogin() || !Auth::isAdmin()) {
         header('Location: ../index.php?controller=Login');
     }
+    // Verify User
 } else if (strcmp($controller, "UserProfile") == 0 || strcmp($controller, "AdminProfile") == 0) {
     if (!Auth::isLogin()) {
         header('Location: ../index.php?controller=Login');

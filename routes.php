@@ -12,15 +12,20 @@ $controllers = array(
     'UserCart' => ['index', 'order'],
     'UserProfile' => ['index',],
     'UserAbout' => ['index',],
-    'UserFronks' => ['index',],
+    'UserFronks' => ['index', 'error'],
     'Test' => ['index'],
 );
 
 // Nếu các tham số nhận được từ URL không hợp lệ (không thuộc list controller và action có thể gọi
 // thì trang báo lỗi sẽ được gọi ra.
 if (!array_key_exists($controller, $controllers) || !in_array($action, $controllers[$controller])) {
-    $controller = 'AdminDashboard';
-    $action = 'error';
+    if (strncmp($controller, "Admin", 5) == 0) {
+        $controller = 'AdminDashboard';
+        $action = 'error';
+    } else {
+        $controller = 'UserFronks';
+        $action = 'error';
+    }
 }
 
 // Nhúng file định nghĩa controller vào để có thể dùng được class định nghĩa trong file đó

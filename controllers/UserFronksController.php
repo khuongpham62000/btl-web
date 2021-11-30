@@ -12,4 +12,9 @@ class UserFronksController extends BaseUserController
     {
         $this->render('fronks');
     }
+
+    public function error()
+    {
+        $this->render('error');
+    }
 }
