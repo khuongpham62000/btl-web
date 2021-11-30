@@ -48,6 +48,12 @@ class AdminOrderController extends BaseAdminController
     {
         if (isset($_GET['id'])) {
             $order = OrderList::findByIdOrFail($_GET['id']);
+            $orderItems = OrderItem::findOrderItemsById($order->id);
+            foreach ($orderItems as $orderItem) {
+                $product = Product::findById($orderItem->product_id);
+                $product->stock -= $orderItem->quantity;
+                $product->save();
+            }
             $date = new Carbon();
             $order->finished_time = $date->format('y-m-d H:i:s');
             $order->save();
